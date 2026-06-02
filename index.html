@@ -434,45 +434,56 @@
     
     
     
-    async function sendResultsToSheet() {
-        const totalErrors = errorsByBlock.reduce((a,b)=>a+b,0);
-        const avgSymbolsMs = getAvg(reactionTimesByType.symbols);
-        const avgWordsMs = getAvg(reactionTimesByType.words);
+   async function sendResultsToSheet() {
+    const totalErrors = errorsByBlock.reduce((a,b)=>a+b,0);
+    const avgSymbolsMs = getAvg(reactionTimesByType.symbols);
+    const avgWordsMs = getAvg(reactionTimesByType.words);
+    
+    const record = {
+        timestamp: new Date().toISOString(),
+        gender: participantGender,
+        age: participantAge,
+        total_time_sec: timerSeconds.toFixed(1),
+        errors_block1: errorsByBlock[0],
+        errors_block2: errorsByBlock[1],
+        errors_block3: errorsByBlock[2],
+        errors_block4: errorsByBlock[3],
+        errors_total: totalErrors,
+        errors_symbols: errorsByType.symbols,
+        errors_words: errorsByType.words,
+        avg_reaction_symbols_ms: avgSymbolsMs.toFixed(1),
+        avg_reaction_words_ms: avgWordsMs.toFixed(1),
+        raw_symbols_ms: JSON.stringify(reactionTimesByType.symbols),
+        raw_words_ms: JSON.stringify(reactionTimesByType.words)
+    };
+    
+    // ⚠️ ЗАМЕНИТЕ НА ВАШ URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuzMNK0kS0jllOduPRgVXFKjBsiMNiyWi_eqrfk-8pkkx857Q7-73oUajuELp55UHI9A/exec";
+    
+    try {
+        // Добавляем таймаут 30 секунд для мобильных сетей
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
         
-        const record = {
-            timestamp: new Date().toISOString(),
-            gender: participantGender,
-            age: participantAge,
-            total_time_sec: timerSeconds.toFixed(1),
-            errors_block1: errorsByBlock[0],
-            errors_block2: errorsByBlock[1],
-            errors_block3: errorsByBlock[2],
-            errors_block4: errorsByBlock[3],
-            errors_total: totalErrors,
-            errors_symbols: errorsByType.symbols,
-            errors_words: errorsByType.words,
-            avg_reaction_symbols_ms: avgSymbolsMs.toFixed(1),
-            avg_reaction_words_ms: avgWordsMs.toFixed(1),
-            raw_symbols_ms: JSON.stringify(reactionTimesByType.symbols),
-            raw_words_ms: JSON.stringify(reactionTimesByType.words)
-        };
+        const response = await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(record),
+            signal: controller.signal
+        });
         
-        // ⚠️ ЗАМЕНИТЕ НА ВАШ URL ОТ DEPLOY ⚠️
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuzMNK0kS0jllOduPRgVXFKjBsiMNiyWi_eqrfk-8pkkx857Q7-73oUajuELp55UHI9A/exec";
+        clearTimeout(timeoutId);
+        return true;
+    } catch(e) {
+        console.error("Ошибка на телефоне:", e);
         
-        try {
-            await fetch(SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(record)
-            });
-            return true;
-        } catch(e) {
-            console.error(e);
-            return false;
-        }
+        // Если не отправилось — сохраняем в localStorage
+        localStorage.setItem("unsaved_results", JSON.stringify(record));
+        console.log("Результаты сохранены локально");
+        return true; // возвращаем true, чтобы не пугать пользователя ошибкой
     }
+}
     
     async function finishTest() {
         if (testCompleted) return;
