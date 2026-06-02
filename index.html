@@ -146,240 +146,43 @@
 </div>
 
 <script>
-     function generateAllStimuli() {
-        // БЛОК 1: слова (100 стимулов)
+    // ========== БЫСТРАЯ ПРОВЕРКА (20 стимулов) ==========
+    function generateAllStimuli() {
         const block1 = [
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
+            { text: "КРАСНЫЙ", correctColor: "red" },
             { text: "СИНИЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "СИНИЙ", correctColor: "red" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
+            { text: "ФИОЛЕТОВЫЙ", correctColor: "purple" },
             { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "СИНИЙ", correctColor: "red" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" }
+            { text: "КОРИЧНЕВЫЙ", correctColor: "brown" }
         ];
-
-        // БЛОК 2: XXXXXXXX (100 стимулов)
-        const block2 = [];
-        const block2Colors = ["red", "brown", "blue", "brown", "green", "purple", "blue", "red", "green", "purple", "brown", "red", "purple", "green", "blue", "green", "purple", "brown", "red", "blue", "green", "purple", "red", "purple", "brown", "blue", "brown", "green", "blue", "red", "blue", "green", "brown", "red", "purple", "red", "green", "blue", "purple", "brown", "purple", "blue", "green", "blue", "red", "brown", "red", "purple", "brown", "green", "red", "brown", "blue", "brown", "green", "purple", "blue", "red", "green", "purple", "brown", "red", "purple", "green", "blue", "green", "purple", "brown", "red", "blue", "green", "purple", "red", "purple", "brown", "blue", "brown", "green", "blue", "red", "blue", "green", "brown", "red", "purple", "red", "green", "blue", "purple", "brown", "purple", "blue", "green", "blue", "red", "brown", "red", "purple", "brown", "green"];
-        for (let i = 0; i < block2Colors.length; i++) {
-            block2.push({ text: "ххххх", correctColor: block2Colors[i] });
-        }
-
-        // БЛОК 3: XXXXXXXX (100 стимулов) - форма 2
-        const block3 = [];
-        const block3Colors = ["green", "brown", "purple", "red", "brown", "red", "blue", "green", "blue", "purple", "brown", "purple", "blue", "green", "red", "purple", "red", "brown", "green", "blue", "red", "blue", "green", "brown", "blue", "brown", "purple", "red", "purple", "green", "blue", "red", "brown", "purple", "green", "blue", "green", "purple", "red", "brown", "purple", "green", "red", "blue", "purple", "green", "brown", "blue", "brown", "red", "green", "brown", "purple", "red", "brown", "red", "blue", "green", "blue", "purple", "brown", "purple", "blue", "green", "red", "purple", "red", "brown", "green", "blue", "red", "blue", "green", "brown", "blue", "brown", "purple", "red", "purple", "green", "blue", "red", "brown", "purple", "green", "blue", "green", "purple", "red", "brown", "purple", "green", "red", "blue", "purple", "green", "brown", "blue", "brown", "red"];
-        for (let i = 0; i < block3Colors.length; i++) {
-            block3.push({ text: "ххххх", correctColor: block3Colors[i] });
-        }
-
-        // БЛОК 4: слова (100 стимулов) - форма 2
+        const block2 = [
+            { text: "ххххх", correctColor: "red" },
+            { text: "ххххх", correctColor: "blue" },
+            { text: "ххххх", correctColor: "green" },
+            { text: "ххххх", correctColor: "purple" },
+            { text: "ххххх", correctColor: "brown" }
+        ];
+        const block3 = [
+            { text: "ххххх", correctColor: "green" },
+            { text: "ххххх", correctColor: "brown" },
+            { text: "ххххх", correctColor: "red" },
+            { text: "ххххх", correctColor: "purple" },
+            { text: "ххххх", correctColor: "blue" }
+        ];
         const block4 = [
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
             { text: "СИНИЙ", correctColor: "brown" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "purple" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "red" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
             { text: "КРАСНЫЙ", correctColor: "green" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
+            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
             { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "purple" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "red" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "purple" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "green" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "red" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "СИНИЙ", correctColor: "green" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "red" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "blue" },
-            { text: "ЗЕЛЕНЫЙ", correctColor: "purple" },
-            { text: "КРАСНЫЙ", correctColor: "green" },
-            { text: "СИНИЙ", correctColor: "brown" },
-            { text: "КРАСНЫЙ", correctColor: "blue" },
-            { text: "ФИОЛЕТОВЫЙ", correctColor: "brown" },
-            { text: "КОРИЧНЕВЫЙ", correctColor: "red" }
+            { text: "ФИОЛЕТОВЫЙ", correctColor: "blue" }
         ];
-
-        // Собираем все блоки с указанием типа
         let all = [];
-        
         for (let stim of block1) { all.push({ ...stim, type: "words", block: 1 }); }
         for (let stim of block2) { all.push({ ...stim, type: "symbols", block: 2 }); }
         for (let stim of block3) { all.push({ ...stim, type: "symbols", block: 3 }); }
         for (let stim of block4) { all.push({ ...stim, type: "words", block: 4 }); }
-        
         return all;
     }
-
            // ======================================================
     
     const COLOR_MAP = {
